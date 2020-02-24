@@ -1,0 +1,63 @@
+{% block body %}
+    {% block stylesheets %}
+        <style>
+            .table { border-collapse: collapse; }
+            .table th, td {
+                border-bottom: 1px solid #ddd;
+                width: 250px;
+                text-align: left;
+                align: left;
+            }
+            #simpleform textarea {
+                border:1px solid grey;
+                font-family:verdana;
+                font-size:14px;
+                color:#000000;
+                height:120px;
+                width:300px;
+                margin: 0 0 20px 10px;
+            }
+        </style>
+    {% endblock %}
+    <h2>Propozycje nowych przystanków</h2>
+    <div>
+        <a href = "{{ path('app_ankieta_display') }}">Powrót</a>
+    </div>
+    <br>
+    <table class = "table">
+        <tr>
+            <th>Temat</th>
+            <th>Tresc</th>
+            <th>RCP</th>
+            <th>File 1</th>
+            <th>File 2</th>
+            <th>File 3</th>
+            <th>Usuń</th>
+        </tr>
+        <tr>
+            <td>{{ pozycja.Temat }}</td>
+            <td><textarea>{{ pozycja.Tresc }}</textarea></td>
+            <td>{{ pozycja.RCP }}</td>
+            {% if pozycja.link1!= "" %}
+                <td><a href="{{ path('app_ankieta_odczyt1', { 'id' : pozycja.id }) }}">Zobacz 1</a></td>
+            {% else %}
+                <td></td>
+            {% endif %}
+
+            {% if pozycja.link2!= "" %}
+                <td><a href="{{ path('app_ankieta_odczyt2', { 'id' : pozycja.id }) }}">Zobacz 2</a></td>
+            {% else %}
+                <td></td>
+
+            {% endif %}
+
+            {% if pozycja.link3!= "" %}
+                <td><a href="{{ path('app_ankieta_odczyt3', { 'id' : pozycja.id }) }}">Zobacz 3</a></td>
+            {% else %}
+                <td></td>
+            {% endif %}
+
+            <td><a href = "{{ path('app_ankieta_delete', { 'id' : pozycja.Id }) }}">Usuń</a></td>
+        </tr>
+    </table>
+{% endblock %}

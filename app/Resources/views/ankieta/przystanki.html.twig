@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+{% block javascripts %}
+    <script language = "javascript" src = "https://code.jquery.com/jquery-2.2.4.min.js"></script>
+{% endblock %}
+{% block stylesheets %}
+    <style>
+        #simpleform {
+            width:800px;
+            border:2px solid grey;
+            padding:14px;
+        }
+        #simpleform label {
+            font-size:14px;
+            float:left;
+            width:300px;
+            text-align:right;
+            display:block;
+        }
+        #simpleform span {
+            font-size:11px;
+            color:grey;
+            width:100px;
+            text-align:right;
+            display:block;
+        }
+        #simpleform input {
+            border:1px solid grey;
+            font-family:verdana;
+            font-size:14px;
+            color:#000000;
+            height:24px;
+            width:300px;
+            margin: 0 0 10px 10px;
+        }
+        #simpleform textarea {
+            border:1px solid grey;
+            font-family:verdana;
+            font-size:14px;
+            color:#000000;
+            height:120px;
+            width:300px;
+            margin: 0 0 20px 10px;
+        }
+        #simpleform select {
+            margin: 0 0 20px 10px;
+        }
+        #simpleform button {
+            clear:both;
+            margin-left:250px;
+            background: grey;
+            color:#FFFFFF;
+            border:solid 1px #666666;
+            font-size:16px;
+        }
+    </style>
+
+{% endblock %}
+{% block body %}
+    <h3>Student form</h3>
+    <div id="simpleform">
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        {{ form_end(form) }}
+    </div>
+
+
+
+{% endblock %}

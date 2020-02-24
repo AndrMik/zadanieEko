@@ -1,0 +1,55 @@
+{% block body %}
+    {% block stylesheets %}
+        <style>
+            .table { border-collapse: collapse; }
+            .table th, td {
+                border-bottom: 1px solid #ddd;
+                width: 250px;
+                text-align: left;
+                align: left;
+            }
+        </style>
+    {% endblock %}
+    <h2>Propozycje nowych przystanków</h2>
+    <div>
+        <a href = "{{ path('app_ankieta_new') }}">Dodaj</a>
+    </div>
+    <table class = "table">
+        <tr>
+            <th>Temat</th>
+            <th>RCP</th>
+            <th>File 1</th>
+            <th>File 2</th>
+            <th>File 3</th>
+            <th>Szczegóły</th>
+            <th>Usuń</th>
+        </tr>
+        {% for x in ankieta %}
+            <tr>
+                <td>{{ x.Temat }}</td>
+                <td>{{ x.RCP }}</td>
+
+                {% if x.link1!= "" %}
+                    <td><a href="{{ path('app_ankieta_odczyt1', { 'id' : x.id}) }}">Zobacz 1</a></td>
+                {% else %}
+                    <td></td>
+                {% endif %}
+
+                {% if x.link2!= "" %}
+                <td><a href="{{ path('app_ankieta_odczyt2', { 'id' : x.id }) }}">Zobacz 2</a></td>
+                {% else %}
+                    <td></td>
+                {% endif %}
+
+                {% if x.link3!= "" %}
+                <td><a href="{{ path('app_ankieta_odczyt3', { 'id' : x.id }) }}">Zobacz 3</a></td>
+                {% else %}
+                    <td></td>
+                {% endif %}
+
+                <td><a href = "{{ path('app_ankieta_szczegoly', { 'id' : x.Id }) }}">Szczegoły</a></td>
+                <td><a href = "{{ path('app_ankieta_delete', { 'id' : x.Id }) }}">Usuń</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
